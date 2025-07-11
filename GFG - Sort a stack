@@ -1,0 +1,27 @@
+/*Complete the function below*/
+class GfG {
+     public void sortHelper(Stack<Integer> s) {
+          if(s.isEmpty()){
+            return;
+        }
+        int top=s.pop();
+        //Recursion Build
+        sortHelper(s);
+        //Recursion Fail
+        doTheSort(top,s);
+     }
+    public Stack<Integer> sort(Stack<Integer> s) {
+        sortHelper(s);
+        doTheSort(top,s);
+        
+    }
+    void doTheSort(int top,Stack<Integer> s){
+        if(s.isEmpty() ||s.peek()){
+            s.push(top);
+            return;
+        }
+        int topValue=s.pop();
+        doTheSort(top,s);
+        s.push(topValue);
+    }
+}
