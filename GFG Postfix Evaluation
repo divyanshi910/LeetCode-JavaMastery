@@ -1,0 +1,34 @@
+class Solution {
+    public int evaluate(String[] arr) {
+        // code here
+         Stack<Integer> stack = new Stack<>();
+
+        for (String token : arr) {
+            // Check if token is an operator
+            if (token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/")) {
+                int op2 = stack.pop();
+                int op1 = stack.pop();
+
+                switch (token) {
+                    case "+":
+                        stack.push(op1 + op2);
+                        break;
+                    case "-":
+                        stack.push(op1 - op2);
+                        break;
+                    case "*":
+                        stack.push(op1 * op2);
+                        break;
+                    case "/":
+                        stack.push(op1 / op2); // integer division
+                        break;
+                }
+            } else {
+                // It's a number, convert from String to int and push
+                stack.push(Integer.parseInt(token));
+            }
+        }
+
+        return stack.pop();
+    }
+}
