@@ -1,0 +1,39 @@
+/*
+class Node
+{
+    int data;
+    Node left, right;
+    public Node(int data)
+    {
+        this.data = data;
+         left = right = null;
+    }
+}*/
+
+class Solution {
+    ArrayList<Integer> rightView(Node root) {
+        // code here.
+        ArrayList<Integer> list = new ArrayList<>();
+         Queue<Node> queue = new LinkedList<>();
+         if(root==null){
+             return list;
+         }
+         queue.add(root);
+         while(!queue.isEmpty()){
+             int level = queue.size();
+             for(int i=0;i<level;i++){
+                 Node currentNode = queue.poll();
+                 if(i==level-1){
+                     list.add(currentNode.data);
+                 }
+                 if(currentNode.left!=null){
+                     queue.add(currentNode.left);
+                 }
+                  if(currentNode.right!=null){
+                     queue.add(currentNode.right);
+                 }
+             }
+         }
+         return list;
+    }
+}
