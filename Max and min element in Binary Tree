@@ -1,0 +1,45 @@
+/*
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int data){
+        this.data = data;
+    }
+}
+*/
+class Solution {
+    public static int findMax(Node root) {
+        // code here
+        if(root == null){
+            return Integer.MIN_VALUE;
+        }
+        int max = Integer.MIN_VALUE;
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            Node currentNode = stack.pop();
+            if(currentNode.data>max){
+                max = currentNode.data; 
+            }//or max = Math.max(max,currentNode.data);
+            if(currentNode.left!=null){
+                stack.push(currentNode.left);
+            }
+            if(currentNode.right!=null){
+                stack.push(currentNode.right);
+            }
+        }
+        return max;
+    }
+
+    public static int findMin(Node root) {
+        // code here
+       if (root == null) {
+        return Integer.MAX_VALUE; // No nodes, so return largest possible
+    }
+    int leftMin = findMin(root.left);
+    int rightMin = findMin(root.right);
+    return Math.min(root.data, Math.min(leftMin, rightMin));
+       
+    }
+}
