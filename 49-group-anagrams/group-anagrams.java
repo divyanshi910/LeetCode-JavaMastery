@@ -30,7 +30,7 @@ class Solution {
         return bigList;
     }
     //Approach 2 hashing TC: n* nlogn
-     public List<List<String>> groupAnagramsOld(String[] strs){
+     public List<List<String>> groupAnagrams(String[] strs){
      Map<String,List<String>> map=new HashMap<>();
           for(String word:strs) //n
           {
@@ -45,7 +45,7 @@ class Solution {
      return new ArrayList<>(map.values()); //these are small lis that is value
      }
      //approach 3
-      public List<List<String>> groupAnagrams(String[] strs){
+      public List<List<String>> groupAnagramso(String[] strs){
          Map<String,List<String>> map=new HashMap<>();
         for(String word:strs){
             int countArr[]=new int[26]; //constant space
