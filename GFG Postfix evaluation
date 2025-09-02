@@ -1,0 +1,25 @@
+class Solution {
+    public int evaluate(String[] arr) {
+        // code here
+        Stack<Integer> stack = new Stack();
+        
+        for(String ch:arr){
+            if(ch.matches("-?\\d+")){
+                stack.push(Integer.parseInt(ch));
+            }
+            else {
+                int op2=stack.pop();
+                int op1=stack.pop();
+                int result=0;
+                switch(ch){
+                    case "+": result = op1 + op2; break;
+                    case "-": result = op1 - op2; break;
+                    case "*": result = op1 * op2; break;
+                    case "/": result = op1 / op2; break;
+                }
+                stack.push(result);
+            }
+        }
+        return stack.pop();
+    }
+}
